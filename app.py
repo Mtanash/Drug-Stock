@@ -57,13 +57,8 @@ class DrugStorage:
                 self.handle_register()
             elif user_input == "print_user":
                 self.print_user()
-                # current_user.check_user()
-                # print(current_user.name, current_user.email)
             else:
                 print("Enter a valid command!", commands)
-
-    # if __name__ == "__main__":
-    #     main()
 
 
 app = DrugStorage(User(), LoginSystem(), DataBase([], "data.txt"), commands)
