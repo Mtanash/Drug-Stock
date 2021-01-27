@@ -1,0 +1,6 @@
+adol 10/2022 3
+adol 05/2023 9
+adol 05/2026 33
+panadol 11/2021 6
+panadol 06/2024 36
+ketofan 11/2021 50
