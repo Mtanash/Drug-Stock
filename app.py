@@ -5,7 +5,7 @@ commands = ["exit >> to exit the programe", "create >> to create a new product",
 
 
 def main():
-    myDatabase = DataBase([])
+    myDatabase = DataBase([], "data.txt")
     myDatabase.readDatabaseFromFile("data.txt")
     while True:
         user_input = input("Enter command: ").lower()

@@ -1,9 +1,10 @@
 class DataBase:
-    def __init__(self, database):
+    def __init__(self, database, file_path):
         self.database = database
+        self.file_path = file_path
 
     def writeDatabaseToFile(self):
-        file = open("data.txt", "w")
+        file = open(self.file_path, "w")
         for i in range(len(self.database)):
             name = self.database[i][0]
             dates = list(self.database[i][1].keys())
@@ -45,7 +46,7 @@ class DataBase:
         return database
 
     def print_all(self):
-        file = open("data.txt", "r")
+        file = open(self.file_path, "r")
         data_list = file.readlines()
         printed_products = []
         for i in data_list:
