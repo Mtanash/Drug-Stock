@@ -44,7 +44,16 @@ class DataBase:
             self.create(name, date, amount)
         return database
 
-    def print_all_database(self):
-        for i in range(len(self.database)):
-            output = f"name: {self.database[i][0]}, date: {self.database[i][1]}"
-            print(output)
+    def print_all(self):
+        file = open("data.txt", "r")
+        data_list = file.readlines()
+        printed_products = []
+        for i in data_list:
+            splited_data = i.split()
+            name, date, amount = splited_data
+            print(
+                """
+       [{}]
+   {}      {}
+--------------------
+""".format(name, date, amount))

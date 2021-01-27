@@ -17,7 +17,7 @@ def main():
             amount = input("Enter amount: ")
             myDatabase.create(name, date, amount)
         elif user_input == "print_all":
-            myDatabase.print_all_database()
+            myDatabase.print_all()
         else:
             print("Enter a valid command!", commands)
 
