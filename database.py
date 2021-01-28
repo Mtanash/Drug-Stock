@@ -4,14 +4,14 @@ class DataBase:
         self.file_path = file_path
 
     def writeDatabaseToFile(self):
-        file = open(self.file_path, "w")
-        for i in range(len(self.database)):
-            name = self.database[i][0]
-            dates = list(self.database[i][1].keys())
-            amounts = list(self.database[i][1].values())
+        with open(self.file_path, "w") as file:
+            for i in range(len(self.database)):
+                name = self.database[i][0]
+                dates = list(self.database[i][1].keys())
+                amounts = list(self.database[i][1].values())
 
-            for x in range(len(dates)):
-                file.write(f"{name} {dates[x]} {amounts[x]}\n")
+                for x in range(len(dates)):
+                    file.write(f"{name} {dates[x]} {amounts[x]}\n")
 
     def check_if_name_exist(self, name):
         if len(self.database) >= 1:
@@ -36,25 +36,25 @@ class DataBase:
         self.writeDatabaseToFile()
 
     def readDatabaseFromFile(self, file_path):
-        file = open(file_path, "r")
-        data_list = file.readlines()
-        database = []
-        for i in data_list:
-            splited_data = i.split()
-            name, date, amount = splited_data
-            self.create(name, date, amount)
+        with open(file_path, "r") as file:
+            data_list = file.readlines()
+            database = []
+            for i in data_list:
+                splited_data = i.split()
+                name, date, amount = splited_data
+                self.create(name, date, amount)
         return database
 
     def print_all(self):
-        file = open(self.file_path, "r")
-        data_list = file.readlines()
-        printed_products = []
-        for i in data_list:
-            splited_data = i.split()
-            name, date, amount = splited_data
-            print(
-                """
-       [{}]
-   {}      {}
---------------------
-""".format(name, date, amount))
+        with open(self.file_path, "r") as file:
+            data_list = file.readlines()
+            printed_products = []
+            for i in data_list:
+                splited_data = i.split()
+                name, date, amount = splited_data
+                print(
+                    """
+        [{}]
+    {}      {}
+    --------------------
+    """.format(name, date, amount))
