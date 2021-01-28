@@ -4,7 +4,8 @@ from user import User
 
 
 commands = ["exit >> to exit the programe", "create >> to create a new product",
-            "print_all >> to print all products", "print >> to print a product by it's name"]
+            "print_all >> to print all products", "print >> to print a product by it's name", "login >> to login to the system",
+           "logout >> to logout the system", "register >> to create a new user"]
 
 
 class DrugStorage:
