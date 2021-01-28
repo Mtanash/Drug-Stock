@@ -48,9 +48,60 @@
 
 # readDatabaseFromFile("data.txt")
 
-from database import DataBase
+import mysql.connector
 
-myDatabase = DataBase([])
-myDatabase.create("adol", "06/2023", "50")
-myDatabase.create("ketofan", "11/2021", "100")
-myDatabase.print_all_database()
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="m7mdTanash",
+    database="testdatabase"
+)
+
+myCursor = mydb.cursor()
+# myCursor.execute("""
+
+# """)
+# mydb.commit()
+
+
+def register():
+    username = input('Enter user name: ')
+    email = input('Enter a valid email: ')
+    password = input('Enter password: ')
+    myCursor.execute("""
+INSERT INTO users(name, email, password)
+VALUES(%s,%s,%s)
+""", (username, email, password))
+    mydb.commit()
+
+
+def login():
+    username = input('Enter user name: ')
+    password = input('Enter password: ')
+    myCursor.execute("""
+SELECT name, password
+FROM users
+WHERE name = %s AND password = %s
+""", (username, password))
+    result = myCursor.fetchone()
+    if result:
+        print('You logged in successfuly!')
+        return
+    print("Invalid user name or password!")
+
+
+def main():
+    while True:
+        user_input = input("Enter command: ").lower()
+        if user_input == "exit":
+            break
+        elif user_input == "login":
+            login()
+        elif user_input == "logout":
+            pass
+        elif user_input == "register":
+            register()
+
+
+if __name__ == "__main__":
+    main()
